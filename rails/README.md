@@ -15,7 +15,7 @@ Get acquainted about Docker syntax, feel free to find out what all it means and 
 |rvm|latest|17f83aa768dd|1 seconds ago|190MB|  
 
   4. ```> cd rails_6```  
-  5. ```> docker build -t rails_6``` 
+  5. ```> docker build -t rails_6 .``` 
   6. ```> docker images```  
 
 |REPOSITORY|TAG|IMAGE ID|CREATED|SIZE|    
