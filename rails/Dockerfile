@@ -32,7 +32,7 @@ ENV LC_ALL en_US.UTF-8
 # Install RVM with gpg (https://rvm.io/rvm/security)
 RUN gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN echo progress-bar >> ~/.curlrc
-RUN curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+RUN curl -sSL https://get.rvm.io | bash -s ${RVM_VERSION} --ignore-dotfiles
 RUN sed -i 's/^mesg n/tty -s \&\& mesg n/g' /root/.profile
 RUN echo "source /usr/local/rvm/scripts/rvm" >> /etc/bash.bashrc
 
@@ -63,7 +63,7 @@ ONBUILD ARG YARN_VERSION
 ONBUILD RUN if [ ! -z ${RVM_RUBY_VERSIONS} ]; then \
               VERSIONS="$(echo "${RVM_RUBY_VERSIONS}" | sed -E -e 's/\s+/\n/g')" \
               &&  for i in ${VERSIONS}; do \
-                    echo "== Installing ${i} ==" \
+                    echo "== Installing RVM Ruby ${i} ==" \
                     && rvm install ${i}; \
                   done \
               && DEFAULT=${RVM_RUBY_DEFAULT:-$(echo "${VERSIONS}" | head -n1)} \
@@ -72,7 +72,7 @@ ONBUILD RUN if [ ! -z ${RVM_RUBY_VERSIONS} ]; then \
             fi \
             && rvm cleanup all \
             && rm -rf /var/lib/apt/lists/* \
-            && echo "== Installed RVM ${RVM_RUBY_DEFAULT} =="
+            && echo "== Installed RVM Ruby ${RVM_RUBY_DEFAULT} =="
 
 # Run if RVM_RAILS_VERSION is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${RVM_RAILS_VERSION} ]; then \
@@ -85,10 +85,17 @@ ONBUILD RUN if [ ! -z ${RVM_RAILS_VERSION} ]; then \
 # Run if NODE_VERSION is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${NODE_VERSION} ]; then \
               echo "== Installing Node ${NODE_VERSION} ==" \
-              && curl -sS "https://deb.nodesource.com/setup_${NODE_VERSION}.x" \
-              && apt-get update \
-              && apt-get install -y nodejs \
+              && curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
+              && apt install -y nodejs \
+              && ln -s /usr/bin/nodejs /usr/local/bin/node \
               && echo "== Installed Node ${NODE_VERSION} =="; \
+            fi
+
+# Run if NPM_VERSION is defined as ARG before the FROM line
+ONBUILD RUN if [ ! -z ${NPM_VERSION} ]; then \
+              echo "== Installing NPM ${NPM_VERSION} ==" \
+              && npm install -g npm@${NPM_VERSION} \
+              && echo "== Installed NPM ${NPM_VERSION} =="; \
             fi
 
 # Run if YARN_VERSION is defined as ARG before the FROM line

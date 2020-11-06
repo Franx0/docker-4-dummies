@@ -11,7 +11,8 @@ This folder includes a Dockerfile to mount Rails 6 version into a Docker contain
 5. Run your local Rails server:  
 ```> rails s -b 0.0.0.0```
 
-Visit ```http://localhost:3000``` in your browser and you will see Rails initial Welcome Page running. 
+Visit ```http://localhost:3000``` in your browser and you will see Rails initial Welcome Page running.  
+
 Because you typed ```> rails_volume:/share``` syntax in the docker running container command, you can ends container running state and re-runs again and you will be able to see the previous created project in same directory with all the previous changes.
 That is possible because you used a related container Volume which we named rails_volume. Feel free to execute:  
 
