@@ -1,7 +1,7 @@
 ### ARG syntax is expecting an argument which is referred in other image
 ARG NODE_VERSION="14"
-ARG NPM_VERSION="latest"
-#ARG YARN_VERSION="stable"
+#ARG NPM_VERSION="latest"  (OPTIONAL)
+#ARG YARN_VERSION="stable" (OPTIONAL)
 
 ### FROM clause tries to find a local Docker image with that name to build a previous environment, if not, Docker will pull it from DockerHub site if it exists
 FROM node:latest
