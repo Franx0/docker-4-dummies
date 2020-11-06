@@ -6,5 +6,8 @@
 This folder includes an explanation of how you can create a simple Rails Environment only using a couple of Docker Images and a Volume to persist code resource inside of Docker container.
 > Without using Docker Compose
 
+### node
+This folder includes an explanation of how you can create a simple NodeJS Environment only using a couple of Docker Images and a Volume to persist code resource inside of Docker container.
+> Without using Docker Compose
 ___
 **Feel free to add your own Dockerfiles to reproduce differente environment approachs**
