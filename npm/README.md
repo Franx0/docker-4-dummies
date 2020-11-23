@@ -1,12 +1,12 @@
 # Welcome to Rails environment, let's start with it:
 <center><img src="https://upload.wikimedia.org/wikipedia/commons/6/62/Ruby_On_Rails_Logo.svg" width="233" height="196" alt="RubyOnRails"></center>
 
-1. ```> cd rails``` in your local cloned directory.
+1. ```> cd rvm``` in your local cloned directory.
 2. Let's build our first image that contains RVM, Ruby, Rails and Node versioned installation. Remember, this first step is not going to create the environment right now, it only is going to prepare an image of how the final environment should be.
 Get acquainted about Docker syntax, feel free to find out what all it means and try to change the behaviour by your self.
 
   ### Steps:
-  1. ```> cd rails```   
+  1. ```> cd rvm```   
   2. ```> docker build -t rvm .``` 
   3. ```> docker images```  
 
