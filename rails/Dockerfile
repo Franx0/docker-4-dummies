@@ -8,7 +8,7 @@ ARG RVM_VERSION=stable
 ENV RVM_VERSION=${RVM_VERSION}
 
 # RMV user to create
-ARG RVM_USER=rvm
+ARG RVM_USER=docker
 ENV RVM_USER=${RVM_USER}
 
 # Install recommended
