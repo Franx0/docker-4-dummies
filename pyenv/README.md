@@ -1,4 +1,4 @@
-# Welcome to Node environment, let's start with it:
+# Welcome to Python environment, let's start with it:
 <center><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/100px-Python-logo-notext.svg.png" width="100" height="auto" alt="Python"></center>  
 <br>
 
