@@ -59,8 +59,6 @@ ONBUILD RUN if [ ! -z ${NVM_VERSION} ]; then \
 # Run if NODE_VERSION is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${NODE_VERSION} ]; then \
               echo "== Installing Node ${NODE_VERSION} ==" \
-              # && curl -sL https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
-              # && apt install -y nodejs \
               && source ${NVM_DIR}/nvm.sh \
               && nvm install ${NODE_VERSION} \
               && nvm cache clear \
