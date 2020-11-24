@@ -12,6 +12,9 @@ FROM rvm:latest
 ENV SHARED_DIR /shared
 ### WORKDIR syntax changes current directory to the specified
 WORKDIR ${SHARED_DIR}
+### Set up USER permissions
+RUN echo "${RVM_USER}:${RVM_USER}" | chpasswd && adduser ${RVM_USER} sudo
+RUN chown -R ${RVM_USER} /home/${RVM_USER}
 RUN chown -R ${RVM_USER} ${SHARED_DIR}
 ### USER syntax changes current user to the specified
 USER ${RVM_USER}

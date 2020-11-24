@@ -1,7 +1,7 @@
 # rails_6
 This folder includes a Dockerfile to mount Rails 6 version into a Docker container. Please, review Dockerfile annotations to understand the following syntax meanings.  
 
-1. ```> docker run -v rails_volume:/shared --name API -it -p 3000:3000 rails_6 bash```
+1. ```> docker run -v rails_volume:/shared --name RAILS_EXAMPLE -it -p 3000:3000 rails_6 bash```
 2. Inside new opened logging terminal type the following command and check:  
 ```> pwd``` == ":/shared"  
 3. Let's create a new Rails Api project:  

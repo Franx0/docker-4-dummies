@@ -23,11 +23,11 @@ Get acquainted about Docker syntax, feel free to find out what all it means and 
 |rails_6|latest|285d8172e03e|1 seconds ago|561MB|  
 |rvm|latest|17f83aa768dd|5 minutes ago|190MB|  
 
-  7. ```> docker run -v rails_volume:/shared --name API -it -p 3000:3000 rails_6 bash```  
+  7. ```> docker run -v rails_volume:/shared --name RAILS_EXAMPLE -it -p 3000:3000 rails_6 bash```  
     Now you will be inside a logged bash terminal with a full rvm environment set and prepared to start working with rails 6.
 
   8. Open a new terminal tab and type: ```> docker container ls``` you will see something similar to:  
 
 |CONTAINER ID|IMAGE|COMMAND|CREATED|STATUS|PORTS|NAMES|
 |---|---|---|---|---|---|---|
-|b78e641b408f|rails_6|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:3000->3000/tcp|API|
+|b78e641b408f|rails_6|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:3000->3000/tcp|RAILS_EXAMPLE|

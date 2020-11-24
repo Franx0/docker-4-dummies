@@ -16,6 +16,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ### RUN syntax execute following bash command
 RUN apt update \
     && apt install -y \
+       sudo \
        curl \
        git \
        gnupg2 \
@@ -37,7 +38,6 @@ RUN sed -i 's/^mesg n/tty -s \&\& mesg n/g' /root/.profile
 RUN echo "source /usr/local/rvm/scripts/rvm" >> /etc/bash.bashrc
 
 ### SHELL syntax starts a shell during the image build, login shell in that case
-# Allow 'rvm' in RUN commands
 SHELL ["/bin/bash", "-l", "-c"]
 
 # Add 'rvm' group to other user

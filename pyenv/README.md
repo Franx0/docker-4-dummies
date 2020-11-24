@@ -24,11 +24,11 @@ Get acquainted about Docker syntax, feel free to find out what all it means and 
 |python_3.9|latest|9f3df128f20a|1 seconds ago|1.29GB|  
 |pyenv|latest|f9ca170f5095|5 minutes ago|829MB|  
 
-  7. ```> docker run -v python_volume:/shared --name TEST -it -p 8080:8080 python_3.9 bash```  
+  7. ```> docker run -v python_volume:/shared --name PYTHON_EXAMPLE -it -p 8080:8080 python_3.9 bash```  
     Now you will be inside a logged bash terminal with a full pyenv environment set and prepared to start working with python 3.9.0.
 
   8. Open a new terminal tab and type: ```> docker container ls``` you will see something similar to:  
 
 |CONTAINER ID|IMAGE|COMMAND|CREATED|STATUS|PORTS|NAMES|
 |---|---|---|---|---|---|---|
-|03f267e27175|python_3.9|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:8080->8080/tcp, 8080/tcp /tcp|TEST|
+|03f267e27175|python_3.9|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:8080->8080/tcp, 8080/tcp /tcp|PYTHON_EXAMPLE|

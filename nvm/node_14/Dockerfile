@@ -16,6 +16,9 @@ RUN useradd -m --no-log-init -r -g node ${NVM_USER}
 ENV SHARED_DIR /shared
 ### WORKDIR syntax changes current directory to the specified
 WORKDIR ${SHARED_DIR}
+### Set up USER permissions
+RUN echo "${NVM_USER}:${NVM_USER}" | chpasswd && adduser ${NVM_USER} sudo
+RUN chown -R ${NVM_USER} /home/${NVM_USER}
 RUN chown -R ${NVM_USER} ${SHARED_DIR}
 ### USER syntax changes current user to the specified
 USER ${NVM_USER}

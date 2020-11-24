@@ -13,6 +13,8 @@ RUN useradd -m --no-log-init -r -g python ${PYTHON_USER}
 ENV SHARED_DIR /shared
 ### WORKDIR syntax changes current directory to the specified
 WORKDIR ${SHARED_DIR}
+### Set up USER permissions
+RUN echo "${PYTHON_USER}:${PYTHON_USER}" | chpasswd && adduser ${PYTHON_USER} sudo
 RUN chown -R ${PYTHON_USER} /home/${PYTHON_USER}
 RUN chown -R ${PYTHON_USER} ${SHARED_DIR}
 ### USER syntax changes current user to the specified

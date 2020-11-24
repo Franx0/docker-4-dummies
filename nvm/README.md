@@ -24,11 +24,11 @@ Get acquainted about Docker syntax, feel free to find out what all it means and 
 |node_14|latest|690d555c948b|1 seconds ago|398MB|  
 |nvm|latest|d7a06706a2da|5 minutes ago|188MB|  
 
-  7. ```> docker run -v node_volume:/shared --name API -it -p 8080:8080 node_14 bash```  
+  7. ```> docker run -v node_volume:/shared --name NODE_EXAMPLE -it -p 8080:8080 node_14 bash```  
     Now you will be inside a logged bash terminal with a full nvm environment set and prepared to start working with node 14.
 
   8. Open a new terminal tab and type: ```> docker container ls``` you will see something similar to:  
 
 |CONTAINER ID|IMAGE|COMMAND|CREATED|STATUS|PORTS|NAMES|
 |---|---|---|---|---|---|---|
-|b78e641b408f|node_14|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:8080->8080/tcp|API|
+|b78e641b408f|node_14|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:8080->8080/tcp|NODE_EXAMPLE|

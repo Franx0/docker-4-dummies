@@ -18,6 +18,7 @@ ENV DEBIAN_FRONTEND=noninteractive
 ### RUN syntax execute following bash command
 RUN apt update \
     && apt install -y \
+       sudo \
        curl \
        git \
        gnupg2 \
@@ -32,7 +33,6 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 ### SHELL syntax starts a shell during the image build, login shell in that case
-# Allow 'node' in RUN commands
 SHELL ["/bin/bash", "-l", "-c"]
 
 # Default NVM version
