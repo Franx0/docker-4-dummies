@@ -1,4 +1,4 @@
-# docker-4-dummies :whale:
+# :whale: docker-4-dummies
 <center><img src="http://blog.phusion.nl/wp-content/uploads/2013/11/docker.png" width="233" height="196" alt="Docker"></center>
 
 ## This repository includes a brief approach to Docker.
