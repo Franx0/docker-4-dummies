@@ -18,4 +18,4 @@ This folder includes an explanation of how you can create a simple Ruby Environm
 > Without using Docker Compose
 
 ___
-**Feel free to add your own Dockerfiles to reproduce differente environment approachs.**
+**Feel free to add your own Dockerfiles to reproduce different environment approachs.**
