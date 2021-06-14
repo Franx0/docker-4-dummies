@@ -22,6 +22,7 @@ RUN apt update \
        gnupg2 \
        locales \
        tzdata \
+       vim \
     && rm -rf /var/lib/apt/lists/*
 
 # Use en_US.UTF-8 as our locale
@@ -61,8 +62,8 @@ ONBUILD ARG YARN_VERSION
 
 # Run if RVM_RUBY_VERSIONS is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${RVM_RUBY_VERSIONS} ]; then \
-              VERSIONS="$(echo "${RVM_RUBY_VERSIONS}" | sed -E -e 's/\s+/\n/g')" \
-              &&  for i in ${VERSIONS}; do \
+              VERSIONS=($(echo $RVM_RUBY_VERSIONS | tr ',' "\n")) \
+              &&  for i in "${VERSIONS[@]}"; do \
                     echo "== Installing RVM Ruby ${i} ==" \
                     && rvm install ${i}; \
                   done \
@@ -74,7 +75,7 @@ ONBUILD RUN if [ ! -z ${RVM_RUBY_VERSIONS} ]; then \
             && rm -rf /var/lib/apt/lists/* \
             && echo "== Installed RVM Ruby ${RVM_RUBY_DEFAULT} =="
 
-# Run if RVM_RAILS_VERSION is defined as ARG before the FROM line
+# Run if RVM_RAILS_VERSION is not defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${RVM_RAILS_VERSION} ]; then \
               echo "== Installing Rails ${RVM_RAILS_VERSION} ==" \
               && gem install rails -v ${RVM_RAILS_VERSION} \
