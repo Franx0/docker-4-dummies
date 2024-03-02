@@ -1,8 +1,8 @@
 ### ARG syntax is expecting an argument which is referred in other image
-ARG RVM_RUBY_VERSIONS="2.6.2"
-ARG RVM_RUBY_DEFAULT="2.6.2"
-ARG RVM_RAILS_VERSION="6.0"
-ARG NODE_VERSION="12"
+ARG RVM_RUBY_VERSIONS="3.3"
+ARG RVM_RUBY_DEFAULT="3.3"
+ARG RVM_RAILS_VERSION="7.0"
+ARG NODE_VERSION="20"
 ARG YARN_VERSION="stable"
 
 ### FROM clause tries to find a local Docker image with that name to build a previous environment, if not, Docker will pull it from DockerHub site if it exists

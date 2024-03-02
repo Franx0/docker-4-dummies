@@ -1,5 +1,5 @@
 ### FROM clause tries to find a local Docker image with that name to build a previous environment, if not, Docker will pull it from DockerHub site if it exists
-FROM ubuntu:18.04
+FROM ubuntu:latest
 
 ### ARG syntax is expecting an argument which is referred in other image
 ### ENV syntax sets a variable value inside the image build
@@ -16,10 +16,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 ### RUN syntax execute following bash command
 RUN apt update \
     && apt install -y \
+       libpq-dev \
        sudo \
        curl \
        git \
-       gnupg2 \
+       gnupg2 -y \
        locales \
        tzdata \
        vim \
@@ -31,8 +32,11 @@ ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
+# Disable ipv6 support
+RUN mkdir ~/.gnupg && echo "disable-ipv6" >> ~/.gnupg/dirmngr.conf
+
 # Install RVM with gpg (https://rvm.io/rvm/security)
-RUN gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN echo progress-bar >> ~/.curlrc
 RUN curl -sSL https://get.rvm.io | bash -s ${RVM_VERSION} --ignore-dotfiles
 RUN sed -i 's/^mesg n/tty -s \&\& mesg n/g' /root/.profile
@@ -60,6 +64,8 @@ ONBUILD ARG NODE_VERSION
 # Default Yarn version
 ONBUILD ARG YARN_VERSION
 
+# Get rvm head
+ONBUILD RUN rvm get head
 # Run if RVM_RUBY_VERSIONS is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${RVM_RUBY_VERSIONS} ]; then \
               VERSIONS=($(echo $RVM_RUBY_VERSIONS | tr ',' "\n")) \
