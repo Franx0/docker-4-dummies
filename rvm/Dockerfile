@@ -16,10 +16,11 @@ ENV DEBIAN_FRONTEND=noninteractive
 ### RUN syntax execute following bash command
 RUN apt update \
     && apt install -y \
+       libpq-dev \
        sudo \
        curl \
        git \
-       gnupg2 \
+       gnupg2 -y \
        locales \
        tzdata \
        vim \
@@ -32,7 +33,7 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Install RVM with gpg (https://rvm.io/rvm/security)
-RUN gpg --keyserver hkp://ipv4.pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+RUN gpg2 --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 RUN echo progress-bar >> ~/.curlrc
 RUN curl -sSL https://get.rvm.io | bash -s ${RVM_VERSION} --ignore-dotfiles
 RUN sed -i 's/^mesg n/tty -s \&\& mesg n/g' /root/.profile
