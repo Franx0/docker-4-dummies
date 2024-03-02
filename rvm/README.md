@@ -14,20 +14,20 @@ Get acquainted about Docker syntax, feel free to find out what all it means and 
 |---|---|---|---|---|    
 |rvm|latest|17f83aa768dd|1 seconds ago|190MB|  
 
-  4. ```> cd rails_6```  
-  5. ```> docker build -t rails_6 .``` 
+  4. ```> cd rails```  
+  5. ```> docker build -t rails_7 .``` 
   6. ```> docker images```  
 
 |REPOSITORY|TAG|IMAGE ID|CREATED|SIZE|    
 |---|---|---|---|---|    
-|rails_6|latest|285d8172e03e|1 seconds ago|561MB|  
+|rails_7|latest|285d8172e03e|1 seconds ago|561MB|  
 |rvm|latest|17f83aa768dd|5 minutes ago|190MB|  
 
-  7. ```> docker run -v rails_volume:/shared --name RAILS_EXAMPLE -it -p 3000:3000 rails_6 bash```  
-    Now you will be inside a logged bash terminal with a full rvm environment set and prepared to start working with rails 6.
+  7. ```> docker run -v rails_volume:/shared --name RAILS_EXAMPLE -it -p 3000:3000 rails_7 bash```  
+    Now you will be inside a logged bash terminal with a full rvm environment set and prepared to start working with rails 7.
 
   8. Open a new terminal tab and type: ```> docker container ls``` you will see something similar to:  
 
 |CONTAINER ID|IMAGE|COMMAND|CREATED|STATUS|PORTS|NAMES|
 |---|---|---|---|---|---|---|
-|b78e641b408f|rails_6|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:3000->3000/tcp|RAILS_EXAMPLE|
+|b78e641b408f|rails_7|"/bin/bash -lc bash"|6 seconds ago|Up 4 seconds|0.0.0.0:3000->3000/tcp|RAILS_EXAMPLE|
