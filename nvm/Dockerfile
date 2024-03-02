@@ -4,7 +4,7 @@ FROM ubuntu:18.04
 ### ARG syntax is expecting an argument which is referred in other image
 ### ENV syntax sets a variable value inside the image build
 # NVM version to install
-ARG NVM_VERSION="0.33.11"
+ARG NVM_VERSION="v0.33.11"
 ENV NVM_VERSION=${NVM_VERSION}
 ENV NVM_DIR=/usr/local/nvm
 RUN mkdir -p ${NVM_DIR}
@@ -50,7 +50,7 @@ ONBUILD ARG YARN_VERSION
 # Run if NVM_VERSION is defined as ARG before the FROM line
 ONBUILD RUN if [ ! -z ${NVM_VERSION} ]; then \
               echo "== Installing NVM ${NVM_VERSION} ==" \
-              && curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/v${NVM_VERSION}/install.sh | bash \
+              && curl --silent -o- https://raw.githubusercontent.com/creationix/nvm/${NVM_VERSION}/install.sh | bash \
               && . "${NVM_DIR}/nvm.sh" \
               && apt-get update \
               && echo "== Installed NVM ${NVM_VERSION} =="; \
